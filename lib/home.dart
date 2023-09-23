@@ -29,7 +29,7 @@ class _homeState extends State<home> {
             onPressed: () {
               Navigator.of(context).pushNamed('three');
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.circle,
               color: Colors.black,
             ),
@@ -54,166 +54,294 @@ class _homeState extends State<home> {
       body: Container(
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: const EdgeInsets.all(15),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 5,
-                        width: MediaQuery.of(context).size.width / 1.1,
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://img.freepik.com/free-photo/retro-living-room-interior-design_53876-145503.jpg'),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 8,
-                child: Container(
-                  padding: const EdgeInsets.only(left: 10, right: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          ...Global.allProducts.map(
-                            (e) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      tap != true;
-                                    });
-                                  },
-                                  child: Text(
-                                    "${e['CategoryName']}",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w400,
-                                      color: (tap == true)
-                                          ? Colors.black
-                                          : Colors.grey,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        child: Row(
-                          children: [
-                            ...Global.allProducts.map(
-                              (e) {
-                                List data = e['data'];
-                                return GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                      'two',
-                                      arguments: e,
-                                    );
-                                  },
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 10),
-                                    padding: EdgeInsets.only(left: 10),
-                                    height:
-                                        MediaQuery.of(context).size.height / 4,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.7,
-                                    decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              'https://i.pinimg.com/1200x/90/21/8d/90218d51525c810f6b5a067be818b630.jpg'),
-                                          fit: BoxFit.cover),
-                                      color: Colors.blueGrey,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(15),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 150),
-                                        Text(
-                                          '\$100',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Seat Chiar',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
                         children: [
                           Container(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: const Text(
-                              "New Arrived",
-                              style: TextStyle(
-                                fontSize: 28,
-                                color: Colors.black,
+                            height: MediaQuery.of(context).size.height / 5,
+                            width: MediaQuery.of(context).size.width / 1.1,
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15),
                               ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height / 34),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 1.1,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 8,
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 10, right: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              ...Global.allProducts.map(
+                                (e) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          tap != true;
+                                        });
+                                      },
+                                      child: Text(
+                                        "${e['CategoryName']}",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w400,
+                                          color: (tap == true)
+                                              ? Colors.black
+                                              : Colors.grey,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
                           ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Stack(
+                          Container(
+                            padding: const EdgeInsets.all(20),
+                            color: Colors.indigo,
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pushNamed(
+                                        'two',
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 10),
+                                      padding: const EdgeInsets.only(left: 10),
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              4,
+                                      width: MediaQuery.of(context).size.width /
+                                          2.7,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.blueGrey,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                      ),
+                                      child: const Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 150),
+                                          Text(
+                                            '\$100',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Seat Chair',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pushNamed(
+                                        'two',
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 10),
+                                      padding: const EdgeInsets.only(left: 10),
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              4,
+                                      width: MediaQuery.of(context).size.width /
+                                          2.7,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.blueGrey,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                      ),
+                                      child: const Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 150),
+                                          Text(
+                                            '\$100',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Seat Chair',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pushNamed(
+                                        'two',
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 10),
+                                      padding: const EdgeInsets.only(left: 10),
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              4,
+                                      width: MediaQuery.of(context).size.width /
+                                          2.7,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.blueGrey,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                      ),
+                                      child: const Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 150),
+                                          Text(
+                                            '\$100',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Seat Chair',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pushNamed(
+                                        'two',
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 10),
+                                      padding: const EdgeInsets.only(left: 10),
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              4,
+                                      width: MediaQuery.of(context).size.width /
+                                          2.7,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.blueGrey,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(15),
+                                        ),
+                                      ),
+                                      child: const Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 150),
+                                          Text(
+                                            '\$100',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Seat Chair',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: const Text(
+                                  "New Arrived",
+                                  style: TextStyle(
+                                    fontSize: 21,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                              height: MediaQuery.of(context).size.height / 30),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            height: MediaQuery.of(context).size.height / 8,
+                            width: MediaQuery.of(context).size.width / 1.1,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.blue.shade50,
+                                  blurRadius: 4,
+                                  spreadRadius: 2,
+                                  blurStyle: BlurStyle.outer,
+                                ),
+                              ],
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15),
+                              ),
+                            ),
+                            child: Row(
+                              //      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
+                                  margin: EdgeInsets.only(right: 10),
                                   height:
                                       MediaQuery.of(context).size.height / 10,
                                   width: MediaQuery.of(context).size.width / 4,
@@ -221,41 +349,154 @@ class _homeState extends State<home> {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15)),
                                     color: Colors.red,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                          'https://i.pinimg.com/736x/70/f6/2f/70f62f5b38449709b892ba6dd7e87c96.jpg'),
+                                  ),
+                                ),
+                                const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: 10),
+                                    Text(
+                                      "Tiny Lamp",
+                                      style: TextStyle(fontSize: 17),
                                     ),
-                                  ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      "\$ 56",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 4),
+                                const Icon(Icons.arrow_right_alt_outlined),
                               ],
                             ),
-                            const Column(
-                              children: [
-                                SizedBox(height: 10),
-                                Text(
-                                  "Tiny Lamp",
-                                  style: TextStyle(fontSize: 24),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  "\$ 56",
-                                  style: TextStyle(
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                              ],
-                            ),
-                            const SizedBox(height: 40),
-                            const Icon(Icons.arrow_forward),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
+              ),
+              Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width / 3.7,
+                    height: MediaQuery.of(context).size.height / 1.12,
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade50,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width / 7,
+                          height: MediaQuery.of(context).size.height / 15,
+                          decoration: const BoxDecoration(
+                            color: Color(0xff003049),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 7,
+                          height: MediaQuery.of(context).size.height / 15,
+                          decoration: const BoxDecoration(
+                            color: Color(0xff003049),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 7,
+                          height: MediaQuery.of(context).size.height / 15,
+                          decoration: const BoxDecoration(
+                            color: Color(0xff003049),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 7,
+                          height: MediaQuery.of(context).size.height / 15,
+                          decoration: const BoxDecoration(
+                            color: Color(0xff003049),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 7,
+                          height: MediaQuery.of(context).size.height / 15,
+                          decoration: const BoxDecoration(
+                            color: Color(0xff003049),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 8,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2.3,
+                    height: MediaQuery.of(context).size.height / 3,
+                    padding: EdgeInsets.only(left: 10, bottom: 10),
+                    decoration: const BoxDecoration(
+                      color: Color(0xff003049),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Text(
+                          "Bed Room",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: MediaQuery.of(context).size.width / 8),
+                        const Icon(
+                          Icons.arrow_right_alt_rounded,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: const Text(
+                      "Collecation",
+                      style: TextStyle(
+                        fontSize: 21,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 10,
               ),
             ],
           ),
