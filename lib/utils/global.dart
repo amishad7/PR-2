@@ -1,83 +1,45 @@
 class Global {
   static List allProducts = [
     {
-      'CategoryName': 'Sofa',
+      'CategoryName': 'Seats',
       'data': [
         {
           "id": 1,
-          "title": "Nirvana 751 ANC",
-          "price": 549,
           'fav': false,
-          "rating": 4.00,
-          'CategoryName': 'Headphones',
-          "description": "Latest version with new friendly features",
+          "title": "Olson Sofa",
+          "price": 4900,
+          "rating": 5.0,
+          'qty': 1,
           "thumbnail":
-              "https://img.freepik.com/free-photo/retro-living-room-interior-design_53876-145503.jpg",
+              "https://i.pinimg.com/564x/e0/cb/35/e0cb355ac366318ec739b83a9642e421.jpg",
+          "description":
+              'The Olson Comfort Sleeper boasts a chunky track silhouette, giving this classic look a modern makeover.',
         },
         {
           "id": 2,
-          "title": "wood sofa",
-          "price": 49,
           'fav': false,
-          "rating": 4.00,
-          'CategoryName': 'Sofa',
-          "description": "Latest version with new friendly features",
+          "title": "South-wold Sofa",
+          "price": 2900,
+          "rating": 4.5,
+          'qty': 1,
           "thumbnail":
-              "https://img.freepik.com/free-photo/retro-living-room-interior-design_53876-145503.jpg",
+              "https://i.pinimg.com/564x/35/7c/b0/357cb05254172f5f890582bcbca26110.jpg",
+          "description":
+              'Slipcover sofa is made for modern living. Square arms and pillow-inspired cushions are covered in extraordinarily comfortable, durable, and stain-resistant Crypton fabric.',
         },
         {
           "id": 3,
-          "title": "Plain Sofa",
-          "price": 49,
           'fav': false,
-          "rating": 4.00,
-          'CategoryName': 'Sofa',
-          "description": "Latest version with new friendly features",
+          "title": "Mery Velvet Sofa",
+          "price": 5000,
+          "rating": 4.5,
+          'qty': 1,
           "thumbnail":
-              "https://img.freepik.com/free-photo/retro-living-room-interior-design_53876-145503.jpg",
-        },
-      ],
-    },
-    {
-      'CategoryName': 'Lamps',
-      'data': [
-        {
-          "id": 1,
-          'CategoryName': 'Lamps',
-          'fav': false,
-          "title": "simple stand",
-          "price": 290,
-          "rating": 5.0,
-          "thumbnail":
-              "https://static.vecteezy.com/system/resources/previews/022/449/441/original/office-chair-isolated-on-transparent-free-png.png",
+              "https://i.pinimg.com/564x/69/f9/b5/69f9b5a23febc7741db828ae5e809a6c.jpg",
           "description":
-              'Known for its premium build quality and iOS operating system, Apples iPad is a popular choice for both productivity and entertainment.',
+              'Slipcover sofa is made for modern living. Square arms and pillow-inspired cushions are covered in extraordinarily comfortable, durable, and stain-resistant Crypton fabric.',
         },
-        {
-          "id": 2,
-          'CategoryName': 'Lamps',
-          'fav': false,
-          "title": "Lightstand",
-          "price": 200,
-          "rating": 5.0,
-          "thumbnail":
-              "https://static.vecteezy.com/system/resources/previews/022/449/441/original/office-chair-isolated-on-transparent-free-png.png",
-          "description":
-              'Known for its premium build quality and iOS operating system, Apples iPad is a popular choice for both productivity and entertainment.',
-        },
-        {
-          "id": 2,
-          'CategoryName': 'Lamps',
-          'fav': false,
-          "title": "dark light stand",
-          "price": 200,
-          "rating": 5.0,
-          "thumbnail":
-              "https://static.vecteezy.com/system/resources/previews/022/449/441/original/office-chair-isolated-on-transparent-free-png.png",
-          "description":
-              'Known for its premium build quality and iOS operating system, Apples iPad is a popular choice for both productivity and entertainment.',
-        },
-      ],
+      ]
     },
   ];
   static List favproducts = [];

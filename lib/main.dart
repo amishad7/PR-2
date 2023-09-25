@@ -8,9 +8,9 @@ void main() {
     title: "PR2",
     debugShowCheckedModeBanner: false,
     routes: {
-      '/': (context) => home(),
-      'two': (context) => info(),
-      'three': (context) => category(),
+      '/': (context) => const home(),
+      'two': (context) => const info(),
+      'three': (context) => const category(),
     },
   ));
 }

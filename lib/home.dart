@@ -72,6 +72,11 @@ class _homeState extends State<home> {
                             borderRadius: BorderRadius.all(
                               Radius.circular(15),
                             ),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  "https://i.pinimg.com/564x/27/c3/9d/27c39de8716d3064870fe29bf69a4688.jpg"),
+                            ),
                           ),
                         ),
                       ],
@@ -86,25 +91,14 @@ class _homeState extends State<home> {
                           children: [
                             ...Global.allProducts.map(
                               (e) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        tap = true;
-                                      });
-                                    },
-                                    child: Container(
-                                      child: Text(
-                                        "${e['CategoryName']}",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                          color: (tap == true)
-                                              ? Colors.black
-                                              : Colors.grey,
-                                        ),
-                                      ),
+                                return Chip(
+                                  backgroundColor: Colors.white,
+                                  label: Text(
+                                    "${e['CategoryName']}",
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
                                     ),
                                   ),
                                 );
@@ -120,178 +114,77 @@ class _homeState extends State<home> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                      'two',
-                                    );
-                                  },
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 10),
-                                    padding: const EdgeInsets.only(left: 10),
-                                    height:
-                                        MediaQuery.of(context).size.height / 4,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.5,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.blueGrey,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(15),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                ...Global.allProducts.map((e) {
+                                  List d = e['data'];
+                                  return Container(
+                                    child: Row(
                                       children: [
-                                        SizedBox(height: 150),
-                                        Text(
-                                          '\$100',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Seat Chair',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                          ),
-                                        ),
+                                        ...d.map(
+                                          (e) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                Navigator.of(context).pushNamed(
+                                                  'two',
+                                                  arguments: e,
+                                                );
+                                              },
+                                              child: Container(
+                                                margin: const EdgeInsets.only(
+                                                    right: 10),
+                                                padding: EdgeInsets.only(
+                                                    left: 17, bottom: 12),
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    4,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    2.5,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.blueGrey,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(15),
+                                                  ),
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: NetworkImage(
+                                                        "${e['thumbnail']}"),
+                                                  ),
+                                                ),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      '\$ ${e['price']}',
+                                                      style: const TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '${e['title']}',
+                                                      style: const TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 14,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        )
                                       ],
                                     ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                      'two',
-                                    );
-                                  },
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 10),
-                                    padding: const EdgeInsets.only(left: 10),
-                                    height:
-                                        MediaQuery.of(context).size.height / 4,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.5,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.blueGrey,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(15),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 150),
-                                        Text(
-                                          '\$100',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Seat Chair',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                      'two',
-                                    );
-                                  },
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 10),
-                                    padding: const EdgeInsets.only(left: 10),
-                                    height:
-                                        MediaQuery.of(context).size.height / 4,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.5,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.blueGrey,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(15),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 150),
-                                        Text(
-                                          '\$100',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Seat Chair',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                      'two',
-                                    );
-                                  },
-                                  child: Container(
-                                    margin: const EdgeInsets.only(right: 10),
-                                    padding: const EdgeInsets.only(left: 10),
-                                    height:
-                                        MediaQuery.of(context).size.height / 4,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.5,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.blueGrey,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(15),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 150),
-                                        Text(
-                                          '\$100',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Seat Chair',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                  );
+                                }).toList(),
                               ],
                             ),
                           ),
@@ -300,6 +193,7 @@ class _homeState extends State<home> {
                           children: [
                             Container(
                               padding: const EdgeInsets.only(left: 15),
+                              margin: const EdgeInsets.only(top: 29),
                               child: const Text(
                                 "New Arrived",
                                 style: TextStyle(
@@ -327,7 +221,7 @@ class _homeState extends State<home> {
                                 blurStyle: BlurStyle.outer,
                               ),
                             ],
-                            borderRadius: BorderRadius.all(
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(15),
                             ),
                           ),
@@ -335,13 +229,18 @@ class _homeState extends State<home> {
                             //      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                margin: EdgeInsets.only(right: 10),
+                                margin: const EdgeInsets.only(right: 10),
                                 height: MediaQuery.of(context).size.height / 10,
                                 width: MediaQuery.of(context).size.width / 4,
                                 decoration: const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(15)),
                                   color: Colors.red,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(
+                                        'https://i.pinimg.com/236x/3d/fe/8f/3dfe8f40f38f0e87c8f3750faa17fa9f.jpg'),
+                                  ),
                                 ),
                               ),
                               const Column(
@@ -372,151 +271,6 @@ class _homeState extends State<home> {
                     ),
                   ),
                 ],
-              ),
-              Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width / 3.1,
-                    height: MediaQuery.of(context).size.height / 1.12,
-                    margin: EdgeInsets.only(right: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white38,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width / 7,
-                          height: MediaQuery.of(context).size.height / 15,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff003049),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 7,
-                          height: MediaQuery.of(context).size.height / 15,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff003049),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 7,
-                          height: MediaQuery.of(context).size.height / 15,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff003049),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 7,
-                          height: MediaQuery.of(context).size.height / 15,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff003049),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 7,
-                          height: MediaQuery.of(context).size.height / 15,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff003049),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 10, left: 10),
-                    width: MediaQuery.of(context).size.width / 1.9,
-                    height: MediaQuery.of(context).size.height / 2.6,
-                    padding: EdgeInsets.only(left: 10, bottom: 10),
-                    decoration: const BoxDecoration(
-                      color: Color(0xff003049),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        const Text(
-                          "Bed Room",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(width: MediaQuery.of(context).size.width / 8),
-                        const Icon(
-                          Icons.arrow_right_alt_rounded,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 35),
-                    child: const Text(
-                      "Collecation",
-                      style: TextStyle(
-                        fontSize: 21,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    width: MediaQuery.of(context).size.width / 2.1,
-                    height: MediaQuery.of(context).size.height / 3,
-                    padding: EdgeInsets.only(left: 10, bottom: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.indigo.shade50,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        const Text(
-                          "Bed Room",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(width: MediaQuery.of(context).size.width / 8),
-                        const Icon(
-                          Icons.arrow_right_alt_rounded,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 10,
               ),
             ],
           ),

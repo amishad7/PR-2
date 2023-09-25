@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pr_2/utils/global.dart';
 
@@ -18,9 +17,17 @@ class _infoState extends State<info> {
       backgroundColor: const Color(0xffa7b9c8),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color(0xffa7b9c8),
+        //  backgroundColor: const Color(0xffa7b9c8),
+        backgroundColor: Colors.transparent,
       ),
       body: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          image: DecorationImage(
+            alignment: Alignment.topCenter,
+            image: NetworkImage('${d['thumbnail']}'),
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,10 +35,10 @@ class _infoState extends State<info> {
             Stack(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 2.9,
+                  height: MediaQuery.of(context).size.height / 2.1,
                   width: double.infinity,
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
@@ -208,13 +215,13 @@ class _infoState extends State<info> {
                                 ),
                               ],
                             ),
-                            child: const Center(
+                            child: Center(
                               child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
-                                      "128\$",
+                                      "${d['price']} \$",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 30,
